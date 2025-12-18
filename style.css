@@ -1,0 +1,296 @@
+/* ----------------- General ----------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  background-color: #121212;
+  color: #eee;
+  line-height: 1.6;
+}
+
+/* ----------------- Navbar ----------------- */
+.navbar {
+  position: sticky;
+  top: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  z-index: 100;
+}
+
+.logo {
+  color: #FFD700;
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-links a {
+  color: #eee;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.nav-links a:hover {
+  color: #A335EE;
+}
+
+/* ----------------- Hero Section ----------------- */
+.hero {
+  height: 80vh;
+  background: url('https://images.unsplash.com/photo-1519681393784-d120267933ba') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.hero-content {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  padding: 2rem 3rem;
+  border-radius: 20px;
+}
+
+.hero-content h2 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+#copy-ip {
+  padding: 0.8rem 1.5rem;
+  background-color: #FFD700;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#copy-ip:hover {
+  background-color: #A335EE;
+  color: #fff;
+}
+
+/* ----------------- Features Section ----------------- */
+.features {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin: 3rem 2rem;
+  flex-wrap: wrap;
+}
+
+.feature-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  padding: 2rem;
+  border-radius: 20px;
+  width: 250px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 30px rgba(255,215,0,0.4);
+}
+
+.feature-card h3 {
+  color: #FFD700;
+  margin-bottom: 0.8rem;
+}
+
+.feature-card p {
+  color: #ccc;
+  font-size: 0.95rem;
+}
+
+/* ----------------- Rules Section ----------------- */
+.rules-section {
+  max-width: 900px;
+  margin: 3rem auto;
+  padding: 0 2rem;
+}
+
+.rules-section h2 {
+  font-size: 2.5rem;
+  color: #FFD700;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.rule-category {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  margin-bottom: 1rem;
+  padding: 1rem 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+}
+
+.rule-category summary {
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #A335EE;
+  outline: none;
+}
+
+.rule-category ul {
+  margin-top: 0.5rem;
+  list-style: disc;
+  padding-left: 1.5rem;
+  color: #ccc;
+}
+
+/* ----------------- Applications Section ----------------- */
+.applications {
+  max-width: 1000px;
+  margin: 3rem auto;
+  padding: 0 2rem;
+}
+
+.applications h2 {
+  font-size: 2.5rem;
+  color: #FFD700;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.applications-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.application-form {
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(10px);
+  padding: 2rem;
+  border-radius: 20px;
+  flex: 1 1 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.application-form h3 {
+  color: #A335EE;
+  margin-bottom: 1rem;
+}
+
+.application-form input,
+.application-form textarea {
+  padding: 0.8rem;
+  border-radius: 10px;
+  border: none;
+  background: rgba(0,0,0,0.4);
+  color: #eee;
+  resize: vertical;
+}
+
+.application-form input:focus,
+.application-form textarea:focus {
+  outline: 2px solid #FFD700;
+}
+
+.application-form button {
+  padding: 0.8rem 1.5rem;
+  border-radius: 10px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  background-color: #A335EE;
+  color: #fff;
+  transition: 0.3s;
+}
+
+.application-form button:hover {
+  background-color: #FFD700;
+  color: #000;
+}
+
+/* ----------------- Staff Section ----------------- */
+.staff-section {
+  max-width: 900px;
+  margin: 3rem auto;
+  padding: 0 2rem;
+  text-align: center;
+}
+
+.staff-section h2 {
+  font-size: 2.5rem;
+  color: #FFD700;
+  margin-bottom: 2rem;
+}
+
+.staff-grid {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.staff-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  padding: 2rem;
+  border-radius: 20px;
+  width: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.staff-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 30px rgba(255,215,0,0.4);
+}
+
+.staff-card img {
+  border-radius: 50%;
+  margin-bottom: 1rem;
+}
+
+.staff-card h3 {
+  color: #A335EE;
+  margin-bottom: 0.3rem;
+}
+
+.staff-card .rank {
+  color: #FFD700;
+  font-weight: bold;
+}
+
+/* ----------------- Responsive ----------------- */
+@media (max-width: 768px) {
+  .features, .applications-grid, .staff-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .feature-card, .application-form, .staff-card {
+    width: 90%;
+  }
+}
