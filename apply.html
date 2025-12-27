@@ -1,86 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>Applications</title>
-
-<style>
-body {
-    background: #0f0f0f;
-    font-family: Arial, sans-serif;
-    color: white;
-}
-.container {
-    max-width: 700px;
-    margin: 40px auto;
-    padding: 25px;
-    background: #1c1c1c;
-    border-radius: 8px;
-}
-h1 {
-    text-align: center;
-}
-label {
-    display: block;
-    margin-top: 15px;
-    font-weight: bold;
-}
-input, textarea, select {
-    width: 100%;
-    padding: 10px;
-    margin-top: 6px;
-    background: #2a2a2a;
-    border: 1px solid #444;
-    color: white;
-    border-radius: 5px;
-}
-button {
-    margin-top: 20px;
-    width: 100%;
-    padding: 12px;
-    background: #5865F2;
-    border: none;
-    color: white;
-    font-size: 16px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-button:hover {
-    background: #4752c4;
-}
-#verifyBox {
-    display: none;
-    margin-top: 20px;
-    padding: 20px;
-    background: #111;
-    border: 1px solid #444;
-    border-radius: 5px;
-    text-align: center;
-}
-.hidden {
-    display: none;
-}
-</style>
-</head>
-
-<body>
-
-<div class="container">
-<h1>Server Applications</h1>
-
-<label>Application Type</label>
-<select id="appType">
-    <option value="staff">Staff Application</option>
-    <option value="media">Media Application</option>
-</select>
-
-<label>In-Game Name (IGN)</label>
-<input type="text" id="ign" required>
-
-<label>Discord Username</label>
-<input type="text" id="discord" required>
-
-<!-- STAFF ONLY -->
 <div id="staffFields">
     <label>Email Address</label>
     <input type="email" id="email">
@@ -99,90 +16,54 @@ button:hover {
 
     <label>Why do you want to be staff?</label>
     <textarea id="staffWhy"></textarea>
+
+    <!-- NEW QUESTIONS BELOW -->
+
+    <label>How many hours per day/week can you moderate?</label>
+    <input type="text" id="hours">
+
+    <label>Do you have any punishments on WildSMP? If yes, explain.</label>
+    <textarea id="punishmentsServer"></textarea>
+
+    <label>Do you have any punishments on other servers?</label>
+    <textarea id="punishmentsOther"></textarea>
+
+    <label>How familiar are you with moderation commands? (/ban, /mute, /warn, etc.)</label>
+    <textarea id="commandKnowledge"></textarea>
+
+    <label>Do you have experience with moderation tools? (LiteBans, LuckPerms, ModMail, etc.)</label>
+    <textarea id="modTools"></textarea>
+
+    <label>How well do you handle stressful or fast-paced situations?</label>
+    <textarea id="stressHandling"></textarea>
+
+    <label>A player is accused of hacking but you didn’t see it. What do you do?</label>
+    <textarea id="scenarioHacking"></textarea>
+
+    <label>Two players are arguing in chat. How do you handle it?</label>
+    <textarea id="scenarioArguing"></textarea>
+
+    <label>A player is spamming slurs. What is your immediate response?</label>
+    <textarea id="scenarioSlurs"></textarea>
+
+    <label>A friend breaks a rule. What do you do?</label>
+    <textarea id="scenarioFriend"></textarea>
+
+    <label>A player claims they were falsely banned. What steps do you take?</label>
+    <textarea id="scenarioFalseBan"></textarea>
+
+    <label>How would you deal with a player angry at staff?</label>
+    <textarea id="angryPlayer"></textarea>
+
+    <label>How do you respond when you make a mistake as staff?</label>
+    <textarea id="mistakeHandling"></textarea>
+
+    <label>What do you think makes a good staff member?</label>
+    <textarea id="goodStaff"></textarea>
+
+    <label>What can you bring to the WildSMP staff team?</label>
+    <textarea id="bringToTeam"></textarea>
+
+    <label>What are your long-term goals as a staff member?</label>
+    <textarea id="staffGoals"></textarea>
 </div>
-
-<!-- MEDIA ONLY -->
-<div id="mediaFields" class="hidden">
-    <label>Subscriber Count</label>
-    <input type="number" id="subs">
-
-    <label>Channel Link(s)</label>
-    <textarea id="channels"></textarea>
-
-    <label>Video Link(s)</label>
-    <textarea id="videos"></textarea>
-</div>
-
-<button type="button" onclick="showVerify()">Submit Application</button>
-
-<div id="verifyBox">
-    <p>🔒 Please verify you are not a robot</p>
-    <button onclick="sendApplication()">I am not a robot</button>
-</div>
-
-</div>
-
-<script>
-// KEEP YOUR REAL WEBHOOK URLS HERE
-const staffWebhook = "https://discord.com/api/webhooks/1450995800669950116/_ICtOAFGbWJO1CXp_cAuLwfccE_ekAEagcEh4X7poX26L3XSwyI_VhbDWeqCKuYveKYO";
-const mediaWebhook = "https://discord.com/api/webhooks/1450995787478597745/vfZztahDBShNL8l8KnKMJAikHJiYPXV_EKcYfP6_EEVUj639ucrOiQo3Cyzi5sJeZV4Q";
-
-document.getElementById("appType").addEventListener("change", function () {
-    document.getElementById("staffFields").classList.toggle("hidden", this.value !== "staff");
-    document.getElementById("mediaFields").classList.toggle("hidden", this.value !== "media");
-});
-
-function showVerify() {
-    document.getElementById("verifyBox").style.display = "block";
-}
-
-function sendApplication() {
-    const type = document.getElementById("appType").value;
-    const webhookURL = type === "staff" ? staffWebhook : mediaWebhook;
-
-    let fields = [
-        { name: "IGN", value: document.getElementById("ign").value || "N/A" },
-        { name: "Discord", value: document.getElementById("discord").value || "N/A" }
-    ];
-
-    if (type === "staff") {
-        fields.push(
-            { name: "Email", value: document.getElementById("email").value || "N/A" },
-            { name: "Age", value: document.getElementById("age").value || "N/A" },
-            { name: "Timezone", value: document.getElementById("timezone").value || "N/A" },
-            { name: "Time on Server", value: document.getElementById("playtime").value || "N/A" },
-            { name: "Staff Experience", value: document.getElementById("experience").value || "N/A" },
-            { name: "Why Staff?", value: document.getElementById("staffWhy").value || "N/A" }
-        );
-    } else {
-        fields.push(
-            { name: "Subscribers", value: document.getElementById("subs").value || "N/A" },
-            { name: "Channel Links", value: document.getElementById("channels").value || "N/A" },
-            { name: "Video Links", value: document.getElementById("videos").value || "N/A" }
-        );
-    }
-
-    fetch(webhookURL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-            embeds: [{
-                title: type === "staff" ? "🛡️ New Staff Application" : "📺 New Media Application",
-                color: type === "staff" ? 15158332 : 3447003,
-                fields: fields,
-                timestamp: new Date()
-            }]
-        })
-    })
-    .then(() => {
-        alert("Application submitted successfully!");
-        location.reload();
-    })
-    .catch(() => {
-        alert("Error sending application.");
-    });
-}
-</script>
-
-</body>
-</html>
